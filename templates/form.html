@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <label for="{{ field.auto_id }}">
+            {{ field.label }}
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </label>
+
+        <div>
+            {{ field }}
+        </div>
+        {% endfor %}
+        <div>
+            <input type="button" value="Simpan">
+        </div>
+    </form>
+</body>
+
+<form method="post">
+    <input type="hidden" name="csrfmiddlewaretoken"
+        value="8QoZgGtQv9UeOm9BFcZ6PXxQIN4zxnN9HdlIS5qqFvGFoGmlTwOS0YersfjvRHxe">
+    <table>
+        <tr>
+            <th><label for="id_nama_lengkap">Nama lengkap:</label></th>
+            <td><input type="text" name="nama_lengkap" maxlength="100" required id="id_nama_lengkap"></td>
+        </tr>
+        <tr>
+            <th><label for="id_tanggal_lahir">Tanggal lahir:</label></th>
+            <td><input type="text" name="tanggal_lahir" required id="id_tanggal_lahir"></td>
+        </tr>
+        <tr>
+            <th><label for="id_jenis_kelamin">Jenis kelamin:</label></th>
+            <td><select name="jenis_kelamin" required id="id_jenis_kelamin">
+                    <option value="" selected>---------</option>
+
+                    <option value="p">Pria</option>
+
+                    <option value="w">Wanita</option>
+
+                </select></td>
+        </tr>
+        <tr>
+            <th><label for="id_alamat">Alamat:</label></th>
+            <td><textarea name="alamat" cols="40" rows="10" required id="id_alamat">
+</textarea></td>
+        </tr>
+        <tr>
+            <th><label for="id_agree">Agree:</label></th>
+            <td><input type="checkbox" name="agree" id="id_agree"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Simpan"></td>
+        </tr>
+    </table>
+</form>
+
+</html>

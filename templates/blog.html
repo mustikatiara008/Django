@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content-1 %}
+
+    {% for v in post %}
+    <h1>{{v.title}}</h1>
+    {% endfor %}
+    {% endblock content-1 %}
+
+    <hr>
+
+    <h1>ini adalah blogs</h1>
+
+    <ul>
+        <li><a href="{% url 'index' %}">home</a></li>
+        <li><a href="{% url 'blogs:index' %}">blogs</a></li>
+        <li><a href="{% url 'about:index' %}">about</a></li>
+        <li><a href="{% url 'form' %}">form</a></li>
+    </ul>
+</body>
+
+</html>
